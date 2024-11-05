@@ -1,4 +1,4 @@
-FROM 18.20.3-alpine3.19
+FROM node:18.20.3-alpine3.19
 EXPOSE 8080
 WORKDIR /opt/server
 ENV MONGO=true
