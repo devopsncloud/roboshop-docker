@@ -50,3 +50,5 @@ services:
   shipping:
     image: shipping:1
     container_name: shipping
+    depends_on:
+    - mysql
