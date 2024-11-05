@@ -54,7 +54,7 @@ services:
     - mysql
 
   rabbitmq:
-    image: rabbitmq:1
+    image: rabbitmq
     container_name: rabbitmq
     environment:
     - RABBITMQ_DEFAULT_USER=roboshop
