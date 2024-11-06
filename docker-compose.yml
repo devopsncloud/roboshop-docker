@@ -3,10 +3,20 @@ networks:
   external: 
     name: roboshop
 
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq:
+
 services:
   mongodb:
     image: mongodb:v1
     container_name: mongodb
+    volumes:
+      - source: mongodb
+        target: /data/db
+        type: volume
     # networks:
     # - roboshop
 
@@ -31,6 +41,10 @@ services:
   redis:
     image: redis
     container_name: redis
+    volumes:
+      - source: redis
+        target: /data
+        type: volume
 
 
   user:
@@ -50,6 +64,10 @@ services:
   mysql:
     image: mysql:v1
     container_name: mysql
+    volumes:
+      - source: mysql
+        target: /var/lib/mysql
+        type: volume
 
   shipping:
     image: shipping:v1
@@ -60,6 +78,10 @@ services:
   rabbitmq:
     image: rabbitmq
     container_name: rabbitmq
+    volumes:
+      - source: rabbitmq
+        target: /var/lib/rabbitmq
+        type: volume
     environment:
     - RABBITMQ_DEFAULT_USER=roboshop
     - RABBITMQ_DEFAULT_PASS=roboshop123
